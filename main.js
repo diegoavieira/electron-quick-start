@@ -13,15 +13,16 @@ let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({
+    kiosk: true
+  })
+
+  //electron-packager ./ myCoffee --overwrite --asar=true --platform=win32 --arch=ia32 --icon=icon.ico --prune=true --out=release-builds --version-string.CompanyName=myCoffee --version-string.FileDescription=myCoffee
 
   // and load the index.html of the app.
-  mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
-    slashes: true
-  }))
-
+  mainWindow.loadURL('http://localhost:3000')
+  mainWindow.setMenu(null)
+ 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
